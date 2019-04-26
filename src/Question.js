@@ -115,21 +115,21 @@ class Question extends Component {
 
                             <div><label htmlFor="questionText">Name</label>
                                 <input defaultValue={question.name} type="text" className="form-control" id="itemText" name="name"
-                                       placeholder="name"
+                                       placeholder="write name here...."
                                        onChange={this.onChange}
                                 />
                             </div>
 
                             <div><label htmlFor="questionText">Title</label>
                                 <input defaultValue={question.comment} type="text" className="form-control" id="itemText" name="comment"
-                                       placeholder="comment"
+                                       placeholder="write comment here...."
                                        onChange={this.onChange}
                                 />
                             </div>
 
 
                             <button onClick={this.handleSubmitComment}
-                                    type="submit" id="submitItemBtn" className="btn btn-primary">Add comment</button>
+                                    type="submit" id="submitItemBtn" className="btn btn-primary">Add</button>
 
                         </div>
                     </form>
@@ -139,7 +139,7 @@ class Question extends Component {
                             {list}
                         </ul>
                     <div className="updateQuestionbtn">
-                        <Link to={`/question/update/${question._id}`}>Update Recipe</Link></div>
+                        <Link to={`/question/update/${question._id}`}>Update QA</Link></div>
 
                 </div>;
 

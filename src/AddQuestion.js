@@ -43,7 +43,7 @@ export default class AddQuestion extends Component{
                             <h1>Add new question</h1>
                             <div><label htmlFor="itemText">Title</label>
                                 <input type="text" className="form-control" id="titleText" name="Title"
-                                       placeholder="Add question"
+                                       placeholder="write title here...."
                                        onChange={this.onChange}
                                 />
                             </div>
@@ -52,14 +52,14 @@ export default class AddQuestion extends Component{
                                 <label htmlFor="addquestionText">Description</label>
 
                                 <textarea type="textarea" className="form-control" id="descriptionText" name="Description"
-                                          placeholder="Add Description"
+                                          placeholder="write description here...."
                                           onChange={this.onChange}/>
                             </div>
 
                             <div>
                                 <label htmlFor="addquestionText">Author</label>
                                 <input type="text" className="form-control" id="authorText" name="Author"
-                                       placeholder="Add Author"
+                                       placeholder="write author here...."
                                        onChange={this.onChange}
                                 />
                             </div>
@@ -69,12 +69,11 @@ export default class AddQuestion extends Component{
 
 
                         <button onClick={this.handleInput}
-                                type="submit" id="submitItemBtn" className="btn btn-primary">Add Task
-                        </button>
+                                type="submit" id="submitItemBtn" className="btn btn-primary">Add</button>
                     </form>
                 </div>
 
-                <button id="backbutton"><Link id="goback" to={`/`}>Go back to recipe</Link></button>
+                <button id="backbutton"><Link id="goback" to={`/`}>Go back to QA overview</Link></button>
             </div>
 
 

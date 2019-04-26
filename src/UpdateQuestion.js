@@ -79,13 +79,12 @@ export default class UpdateRecipe extends Component {
                         </div>
 
                         <button onClick={this.handleInput}
-                                type="submit" id="submitItemBtn" className="btn btn-primary">Update task
-                        </button>
+                                type="submit" id="submitItemBtn" className="btn btn-primary">Update</button>
 
                     </form>
                 </div>
 
-                <button id="backbutton"><Link id="goback" to={`/`}>Go back to recipe</Link></button>
+                <button id="backbutton"><Link id="goback" to={`/`}>Go back to QA</Link></button>
             </div>
 
         );

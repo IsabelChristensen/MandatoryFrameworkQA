@@ -21,7 +21,7 @@ class QuestionList extends Component {
         return (
             <div>
                 <div className="createQuestionbtn">
-                    <Link to={`/question/create`}>Create Recipe</Link>
+                    <Link to={`/question/create`}>Create QA</Link>
 
                 </div>
 

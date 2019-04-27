@@ -40,8 +40,8 @@ app.use((req, res, next) => {
 
 
 let mongoose = require('mongoose');
-//let dbUrl = 'mongodb://localhost/question';
-let dbUrl = 'mongodb+srv://dbUser:1234@cluster0-xp3ht.mongodb.net/test?retryWrites=true';
+let dbUrl = 'mongodb://localhost/question';
+//let dbUrl = 'mongodb+srv://dbUser:1234@cluster0-xp3ht.mongodb.net/test?retryWrites=true';
 
 mongoose.connect(dbUrl, {useNewUrlParser: true}, (err) => {
     console.log('mongo db connection', err)

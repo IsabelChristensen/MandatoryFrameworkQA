@@ -115,17 +115,18 @@ class App extends Component {
 
     }
 
-    addComment(comment, id , name){
+    addComment(name, comment, id){
 
+        console.log(name);
         console.log(comment);
         console.log(id);
-        console.log(name);
         console.log("WHY U NO DINFED? :" + this.API_URL);
 
         let newComment = {
             name: name,
             comment: comment
         };
+
 
         fetch(`${this.API_URL}/question/create/comment/${id}`, {
 

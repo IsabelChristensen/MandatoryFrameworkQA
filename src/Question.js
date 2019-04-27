@@ -57,9 +57,10 @@ class Question extends Component {
     handleSubmitComment(event) {
         event.preventDefault();
         this.props.addComment(
-            this.state.comment,
-            this.state.question._id,
             this.state.name,
+            this.state.comment,
+            this.state.question._id
+
         );
     }
 

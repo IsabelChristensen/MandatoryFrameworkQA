@@ -11,6 +11,8 @@ import UpdateRecipe from "./UpdateQuestion";
 
 class App extends Component {
 
+    API_URL = process.env.REACT_APP_API_URL;
+
     constructor(props) {
         super(props);
 
@@ -32,13 +34,15 @@ class App extends Component {
 
     getData() {
 
-        fetch('http://localhost:8080/question')
+        fetch(`${this.API_URL}/question`)
             .then(response => response.json())
             .then(questions => this.setState({ questions}))
     }
 
 
     addQuestion(title, description, author){
+
+        console.log("WHY U NO DINFED? :" + this.API_URL);
 
         let newQuestion = {
             title: title,
@@ -48,7 +52,7 @@ class App extends Component {
 
         console.log(title + description + author );
 
-        fetch('http://localhost:8080/question', {
+        fetch(`${this.API_URL}/question`, {
 
             method: 'POST',
             body: JSON.stringify(newQuestion),
@@ -82,7 +86,7 @@ class App extends Component {
 
         };
 
-        fetch(`http://localhost:8080/question/update/${id}`, {
+        fetch(`${this.API_URL}/question/update/${id}`, {
 
             method: 'PUT',
             body: JSON.stringify(newQuestion),
@@ -111,60 +115,19 @@ class App extends Component {
 
     }
 
-    votePlusForQuestion(id) {
-
-
-        fetch(`http://localhost:8080/question/update/plus/comment/${id}`, {
-
-
-
-            method: 'PUT',
-            //body: JSON.stringify(id),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-            .then(response => response.json())
-            .then(json => {
-                window.location.reload(); //refresher siden
-                console.log("test");
-                console.log("HELLO");
-            });
-
-        console.log("End of init()");
-    }
-
-    voteMinusForQuestion(id) {
-
-
-        fetch(`http://localhost:8080/question/update/minus/comment/${id}`, {
-            //'/question/update/comment/:id/',
-
-
-            method: 'PUT',
-            //body: JSON.stringify(id),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-            .then(response => response.json())
-            .then(json => {
-                window.location.reload(); //refresher siden
-
-            });
-
-        console.log("End of init()");
-    }
-
     addComment(comment, id , name){
+
+        console.log(comment);
+        console.log(id);
+        console.log(name);
+        console.log("WHY U NO DINFED? :" + this.API_URL);
 
         let newComment = {
             name: name,
             comment: comment
         };
 
-
-        fetch(`http://localhost:8080/question/create/comment/${id}`, {
+        fetch(`${this.API_URL}/question/create/comment/${id}`, {
 
             method: 'POST',
             body: JSON.stringify(newComment),
@@ -184,6 +147,50 @@ class App extends Component {
 
 
     }
+
+    votePlusForQuestion(id) {
+
+
+        fetch(`${this.API_URL}/question/update/plus/comment/${id}`, {
+
+
+
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(json => {
+                window.location.reload(); //refresher siden
+                console.log("test");
+                console.log("HELLO");
+            });
+
+        console.log("End of init()");
+    }
+
+    voteMinusForQuestion(id) {
+
+
+        fetch(`${this.API_URL}/question/update/minus/comment/${id}`, {
+
+
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(json => {
+                window.location.reload(); //refresher siden
+
+            });
+
+        console.log("End of init()");
+    }
+
+
 
     render() {
         return (

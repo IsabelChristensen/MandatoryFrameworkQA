@@ -40,7 +40,8 @@ app.use((req, res, next) => {
 
 
 let mongoose = require('mongoose');
-let dbUrl = 'mongodb://localhost/question';
+//let dbUrl = 'mongodb://localhost/question';
+let dbUrl = 'mongodb+srv://dbUser:1234@cluster0-xp3ht.mongodb.net/test?retryWrites=true';
 
 mongoose.connect(dbUrl, {useNewUrlParser: true}, (err) => {
     console.log('mongo db connection', err)
@@ -84,7 +85,7 @@ Question1.save(function (err, Question1) {
 
 //GET all the questions
 
-app.get('/question/', (req, res) => {
+app.get('/api/question/', (req, res) => {
 
     Question.find({}, (err, question) => {
 
@@ -96,7 +97,7 @@ app.get('/question/', (req, res) => {
 
 //GET questions by ID
 
-app.get('/question/:id', (req, res) => {
+app.get('/api/question/:id', (req, res) => {
 
     Question.findOne({
 
@@ -111,7 +112,7 @@ app.get('/question/:id', (req, res) => {
 
 //POST storing a new Question
 
-app.post('/question' ,(req, res) => {
+app.post('/api/question' ,(req, res) => {
 
     console.log("we are in the post");
 
@@ -137,7 +138,7 @@ app.post('/question' ,(req, res) => {
 //POST create a new comment for a Question
 
 
-app.post('/question/create/comment/:id',(req, res) => {
+app.post('/api/question/create/comment/:id',(req, res) => {
 
     console.log("we are in the post");
 
@@ -158,7 +159,7 @@ app.post('/question/create/comment/:id',(req, res) => {
 
 //PUT updating question
 
-app.put('/question/update/:id/', (req, res) => {
+app.put('/api/question/update/:id/', (req, res) => {
 
 
     const {id} = req.params;
@@ -183,7 +184,7 @@ app.put('/question/update/:id/', (req, res) => {
 
 //Update the comments vote - this is for the plus vote
 
-app.put('/question/update/plus/comment/:id/', (req, res) => {
+app.put('/api/question/update/plus/comment/:id/', (req, res) => {
 
 
     Question.find({}, (err, question) => {
@@ -207,7 +208,7 @@ app.put('/question/update/plus/comment/:id/', (req, res) => {
 //Update the comments vote - this is for the minus vote
 
 
-app.put('/question/update/minus/comment/:id/', (req, res) => {
+app.put('/api/question/update/minus/comment/:id/', (req, res) => {
     console.log("DETTE ER DIN ID FRA API: " + req.params.id);
 
 
@@ -228,6 +229,11 @@ app.put('/question/update/minus/comment/:id/', (req, res) => {
     res.json({ msg: `You have put this data:`});
 });
 
+/****** Error handling ******/
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send({msg: 'Something broke!'})
+});
 
 app.listen(port, () => console.log(`Isabel´s QA running on port ${port}!`));
 

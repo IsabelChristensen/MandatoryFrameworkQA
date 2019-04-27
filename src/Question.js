@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 
 
 class Question extends Component {
+    API_URL = process.env.REACT_APP_API_URL;
 
     constructor(props) {
         super(props);
@@ -16,7 +17,7 @@ class Question extends Component {
         this.onChange = this.onChange.bind(this);
         this.handleSubmitComment = this.handleSubmitComment.bind(this);
 
-        fetch('http://localhost:8080/question/'+ props.match.params.id)
+        fetch(`${this.API_URL}/question/` + props.match.params.id)
             .then(response => response.json())
             .then(json =>
                 this.setState({question:json}))
